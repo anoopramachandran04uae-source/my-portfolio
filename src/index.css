@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Inter+Tight:wght@600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
+    --card: 240 7% 8%;
+    --card-foreground: 0 0% 95%;
+    --popover: 240 7% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 133 100% 50%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 240 5% 18%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 240 5% 14%;
+    --muted-foreground: 240 3% 55%;
+    --accent: 240 5% 18%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 133 100% 50%;
+    --chart-1: 133 100% 50%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.25rem;
+
+    --font-inter: 'Inter', sans-serif;
+    --font-inter-tight: 'Inter Tight', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
+    --card: 240 7% 8%;
+    --card-foreground: 0 0% 95%;
+    --popover: 240 7% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 133 100% 50%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 240 5% 18%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 240 5% 14%;
+    --muted-foreground: 240 3% 55%;
+    --accent: 240 5% 18%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 133 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Hairline grid */
+.grid-hairline {
+  background-image: 
+    linear-gradient(to right, hsl(240 4% 16% / 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(240 4% 16% / 0.3) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Selection */
+::selection {
+  background: hsl(133 100% 50% / 0.2);
+  color: hsl(133 100% 50%);
+}
