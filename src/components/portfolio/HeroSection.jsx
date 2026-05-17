@@ -8,6 +8,7 @@ export default function HeroSection() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
     const ctx = canvas.getContext("2d");
     let animationId;
     let nodes = [];
@@ -25,6 +26,7 @@ export default function HeroSection() {
       const w = canvas.offsetWidth;
       const h = canvas.offsetHeight;
       const count = Math.min(Math.floor((w * h) / 12000), 80);
+
       for (let i = 0; i < count; i++) {
         nodes.push({
           x: Math.random() * w,
@@ -44,12 +46,14 @@ export default function HeroSection() {
       nodes.forEach((n) => {
         n.x += n.vx;
         n.y += n.vy;
+
         if (n.x < 0 || n.x > w) n.vx *= -1;
         if (n.y < 0 || n.y > h) n.vy *= -1;
 
         const dx = mouse.x - n.x;
         const dy = mouse.y - n.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
+
         if (dist < 150) {
           n.x -= dx * 0.01;
           n.y -= dy * 0.01;
@@ -61,6 +65,7 @@ export default function HeroSection() {
           const dx = nodes[i].x - nodes[j].x;
           const dy = nodes[i].y - nodes[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
+
           if (dist < 120) {
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -93,10 +98,12 @@ export default function HeroSection() {
     ).matches;
 
     resize();
+
     if (!reducedMotion) {
       draw();
       canvas.addEventListener("mousemove", handleMouse);
     }
+
     window.addEventListener("resize", resize);
 
     return () => {
@@ -124,7 +131,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <p className="font-mono text-[11px] tracking-[0.4em] text-primary mb-6">
-            FULL STACK DEVELOPER // SYSTEM ARCHITECT
+            FULL STACK DEVELOPER // BACKEND & INTEGRATION ENGINEER
           </p>
         </motion.div>
 
@@ -148,9 +155,15 @@ export default function HeroSection() {
           <span className="font-mono text-xs text-muted-foreground border border-border px-3 py-1.5">
             7+ YRS EXPERIENCE
           </span>
+
           <span className="font-mono text-xs text-muted-foreground border border-border px-3 py-1.5">
-            UAE GOV PLATFORMS
+            BOOKING PLATFORMS
           </span>
+
+          <span className="font-mono text-xs text-muted-foreground border border-border px-3 py-1.5">
+            UAE GOV APIs
+          </span>
+
           <span className="font-mono text-xs text-muted-foreground border border-border px-3 py-1.5">
             TAMM INTEGRATED
           </span>
@@ -160,11 +173,11 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="mt-8 max-w-xl mx-auto text-muted-foreground text-base leading-relaxed font-inter"
+          className="mt-8 max-w-2xl mx-auto text-muted-foreground text-base leading-relaxed font-inter"
         >
-          Engineering large-scale government platforms, backend API
-          architectures, and high-performance integrations across the UAE
-          digital ecosystem.
+          Engineering production-grade booking platforms, backend API
+          architectures, UAE government third-party integrations, and
+          TAMM-connected digital service workflows across the UAE ecosystem.
         </motion.p>
 
         <motion.div
@@ -187,7 +200,6 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Bottom gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
